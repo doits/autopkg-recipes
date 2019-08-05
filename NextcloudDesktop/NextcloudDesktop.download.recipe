@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Description</key>
-	<string>Downloads the latest version of Nextcloud Desktop.</string>
-	<key>Identifier</key>
-	<string>com.github.doits.download.NextcloudDesktop</string>
-	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>NextcloudDesktop</string>
+		<key>Description</key>
+		<string>Downloads the latest version of Nextcloud Desktop.</string>
+		<key>Identifier</key>
+		<string>com.github.doits.download.NextcloudDesktop</string>
+		<key>Input</key>
+		<dict>
+			<key>NAME</key>
+			<string>NextcloudDesktop</string>
+		</dict>
+		<key>MinimumVersion</key>
+		<string>0.6.1</string>
+		<key>Process</key>
+		<array>
+			<dict>
+				<key>Processor</key>
+				<string>URLTextSearcher</string>
+				<key>Arguments</key>
+				<dict>
+					<key>url</key>
+					<string>https://github.com/nextcloud/desktop/releases.atom</string>
+					<key>re_pattern</key>
+					<string>&lt;title&gt;v(?P&lt;version&gt;[\d]+\.[\d]+\.[\d]+)&lt;/title&gt;</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>URLTextSearcher</string>
+				<key>Arguments</key>
+				<dict>
+					<key>url</key>
+					<string>https://download.nextcloud.com/desktop/releases/Mac/Installer/</string>
+					<key>re_pattern</key>
+					<string>(?P&lt;pkgname&gt;Nextcloud-%version%.*?\.pkg)</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>Arguments</key>
+				<dict>
+					<key>url</key>
+					<string>https://download.nextcloud.com/desktop/releases/Mac/Installer/%pkgname%</string>
+				</dict>
+				<key>Processor</key>
+				<string>URLDownloader</string>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>EndOfCheckPhase</string>
+			</dict>
+		</array>
 	</dict>
-	<key>MinimumVersion</key>
-	<string>0.6.1</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https://github.com/nextcloud/desktop/releases.atom</string>
-				<key>re_pattern</key>
-				<string>&lt;title&gt;v(?P&lt;version&gt;[\d]+\.[\d]+\.[\d]+)&lt;/title&gt;</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https://download.nextcloud.com/desktop/releases/Mac/Installer/</string>
-				<key>re_pattern</key>
-				<string>(?P&lt;pkgname&gt;Nextcloud-%version%.*?\.pkg)</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https://download.nextcloud.com/desktop/releases/Mac/Installer/%pkgname%</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-	</array>
-</dict>
 </plist>
