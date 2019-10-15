@@ -23,7 +23,7 @@
 					<key>url</key>
 					<string>https://github.com/nextcloud/desktop/releases.atom</string>
 					<key>re_pattern</key>
-					<string>&lt;title&gt;v(?P&lt;version&gt;[\d]+\.[\d]+\.[\d]+)&lt;/title&gt;</string>
+					<string>&lt;id&gt;tag:.*(?P&lt;version&gt;[\d]+\.[\d]+\.[\d]+)&lt;/id&gt;</string>
 				</dict>
 			</dict>
 			<dict>
