@@ -34,7 +34,7 @@
 					<key>url</key>
 					<string>https://download.nextcloud.com/desktop/releases/Mac/Installer/</string>
 					<key>re_pattern</key>
-					<string>(?P&lt;pkgname&gt;Nextcloud-%version%.*?\.pkg)</string>
+					<string>(?P&lt;pkgname&gt;Nextcloud-%version%\.[0-9]+?\.pkg)</string>
 				</dict>
 			</dict>
 			<dict>
