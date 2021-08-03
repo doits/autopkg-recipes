@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of GIMP from gimp.org.</string>
 	<key>Identifier</key>
-	<string>io.github.hjuutilainen.download.GIMP</string>
+	<string>com.github.doits.download.GIMP</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
