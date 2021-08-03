@@ -23,7 +23,7 @@
 					<key>url</key>
 					<string>https://www.mixxx.org/download/</string>
 					<key>re_pattern</key>
-					<string>(?P&lt;url&gt;https://downloads.mixxx.org/mixxx-.*/(?P&lt;pkgname&gt;mixxx-(?P&lt;version&gt;.+)-osxintel.dmg))</string>
+					<string>(?P&lt;url&gt;https://downloads.mixxx.org/releases/.*/(?P&lt;pkgname&gt;mixxx-(?P&lt;version&gt;.+)-macosintel.dmg))</string>
 				</dict>
 			</dict>
 			<dict>
