@@ -21,9 +21,9 @@
 				<key>Arguments</key>
 				<dict>
 					<key>url</key>
-					<string>https://github.com/nextcloud/desktop/releases.atom</string>
+					<string>https://api.github.com/repos/nextcloud/desktop/releases</string>
 					<key>re_pattern</key>
-					<string>&lt;id&gt;tag:.*(?P&lt;v&gt;[\d]+\.[\d]+\.[\d]+)&lt;/id&gt;</string>
+					<string>"name": "Release (?P&lt;version&gt;[\d]+\.[\d]+\.[\d]+)"</string>
 				</dict>
 			</dict>
 			<dict>
@@ -34,7 +34,7 @@
 					<key>url</key>
 					<string>https://download.nextcloud.com/desktop/releases/Mac/Installer/</string>
 					<key>re_pattern</key>
-					<string>(?P&lt;pkgname&gt;Nextcloud-%v%(\.[0-9]+?)?\.pkg)</string>
+					<string>(?P&lt;pkgname&gt;Nextcloud-%version%(\.[0-9]+?)?\.pkg)</string>
 				</dict>
 			</dict>
 			<dict>
