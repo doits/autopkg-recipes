@@ -17,34 +17,23 @@
 		<array>
 			<dict>
 				<key>Processor</key>
-				<string>URLTextSearcher</string>
+				<string>GitHubReleasesInfoProvider</string>
 				<key>Arguments</key>
 				<dict>
-					<key>url</key>
-					<string>https://api.github.com/repos/nextcloud/desktop/releases</string>
-					<key>re_pattern</key>
-					<string>"name": "Release (?P&lt;version&gt;[\d]+\.[\d]+\.[\d]+)"</string>
+					<key>github_repo</key>
+					<string>nextcloud/desktop</string>
+					<key>asset_regex</key>
+					<string>Nextcloud-(.*).pkg</string>
 				</dict>
 			</dict>
 			<dict>
-				<key>Processor</key>
-				<string>URLTextSearcher</string>
-				<key>Arguments</key>
-				<dict>
-					<key>url</key>
-					<string>https://download.nextcloud.com/desktop/releases/Mac/Installer/</string>
-					<key>re_pattern</key>
-					<string>(?P&lt;pkgname&gt;Nextcloud-%version%(\.[0-9]+?)?\.pkg)</string>
-				</dict>
-			</dict>
-			<dict>
-				<key>Arguments</key>
-				<dict>
-					<key>url</key>
-					<string>https://download.nextcloud.com/desktop/releases/Mac/Installer/%pkgname%</string>
-				</dict>
 				<key>Processor</key>
 				<string>URLDownloader</string>
+				<key>Arguments</key>
+				<dict>
+					<key>url</key>
+					<string>%url%</string>
+				</dict>
 			</dict>
 			<dict>
 				<key>Processor</key>

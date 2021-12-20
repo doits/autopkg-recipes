@@ -19,6 +19,7 @@
 				<key>catalogs</key>
 				<array>
 					<string>testing</string>
+					<string>production</string>
 				</array>
 				<key>developer</key>
 				<string>Nextcloud GmbH</string>
