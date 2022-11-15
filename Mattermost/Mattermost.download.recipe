@@ -27,11 +27,11 @@
         </dict>
       </dict>
       <dict>
-				<key>Arguments</key>
-				<dict>
+        <key>Arguments</key>
+        <dict>
           <key>CHECK_FILESIZE_ONLY</key>
-          <string>true</string>
-				</dict>
+          <true/>
+        </dict>
         <key>Processor</key>
         <string>URLDownloader</string>
       </dict>
