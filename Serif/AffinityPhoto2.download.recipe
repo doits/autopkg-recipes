@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Comment</key>
+    <string>NOTE: LANGUAGE_CODE is currently set to "de" (German).  "en-us" (United States English) is also valid and there may be other valid language codes as well.</string>
+    <key>Description</key>
+    <string>Downloads the latest version of Affinity Photo 2.</string>
+    <key>Identifier</key>
+    <string>com.github.doits.download.AffinityPhoto2</string>
+    <key>Input</key>
+    <dict>
+      <key>LANGUAGE_CODE</key>
+      <string>de</string>
+      <key>NAME</key>
+      <string>AffinityPhoto2</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+      <dict>
+        <key>Arguments</key>
+        <dict>
+          <key>re_pattern</key>
+          <string>((?P&lt;url&gt;https://d1gl0nrskhax8d\.cloudfront\.net/macos/photo2/\d+(\.\d*){2,}/(?P&lt;filename&gt;affinity-photo-(?P&lt;version&gt;\d+(\.\d*){2,})\.dmg))\?Expires=(?P&lt;expires&gt;\d+)&amp;amp;Signature=(?P&lt;signature&gt;[\w\~\-]+)&amp;amp;Key-Pair-Id=(?P&lt;key&gt;[\w]+))</string>
+          <key>result_output_var_name</key>
+          <string>url</string>
+          <key>url</key>
+          <string>https://store.serif.com/%LANGUAGE_CODE%/update/macos/photo/2/</string>
+        </dict>
+        <key>Processor</key>
+        <string>URLTextSearcher</string>
+      </dict>
+      <dict>
+        <key>Arguments</key>
+        <dict>
+          <key>filename</key>
+          <string>%NAME%-%version%.dmg</string>
+          <key>url</key>
+          <string>%url%?Expires=%expires%&amp;Signature=%signature%&amp;Key-Pair-Id=%key%</string>
+        </dict>
+        <key>Processor</key>
+        <string>URLDownloader</string>
+      </dict>
+      <dict>
+        <key>Processor</key>
+        <string>EndOfCheckPhase</string>
+      </dict>
+      <dict>
+        <key>Arguments</key>
+        <dict>
+          <key>input_path</key>
+          <string>%pathname%/Affinity Photo 2.app</string>
+          <key>requirement</key>
+          <string>anchor apple generic and identifier "com.seriflabs.affinityphoto2" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6LVTQB9699")</string>
+        </dict>
+        <key>Processor</key>
+        <string>CodeSignatureVerifier</string>
+      </dict>
+    </array>
+  </dict>
+</plist>
