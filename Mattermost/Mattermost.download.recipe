@@ -16,28 +16,25 @@
     <key>Process</key>
     <array>
       <dict>
-        <key>Processor</key>
-        <string>URLTextSearcher</string>
-        <key>Arguments</key>
-        <dict>
-          <key>url</key>
-          <string>https://github.com/mattermost/desktop/releases/latest</string>
-          <key>re_pattern</key>
-          <string>(?P&lt;url&gt;https://releases.mattermost.com/[^\s]*/mattermost-desktop-(?P&lt;version&gt;[0-9.]+)-mac-universal.dmg)</string>
-        </dict>
+	<key>Processor</key>
+	<string>GitHubReleasesInfoProvider</string>
+	<key>Arguments</key>
+	<dict>
+	  <key>github_repo</key>
+	  <string>mattermost/desktop</string>
+	  <key>latest_only</key>
+	  <true/>
+	  <key>asset_regex</key>
+	  <string>mattermost-desktop-(.*)-mac-universal.dmg</string>
+	</dict>
       </dict>
       <dict>
-        <key>Arguments</key>
-        <dict>
-          <key>CHECK_FILESIZE_ONLY</key>
-          <true/>
-        </dict>
-        <key>Processor</key>
-        <string>URLDownloader</string>
+	<key>Processor</key>
+	<string>URLDownloader</string>
       </dict>
       <dict>
-        <key>Processor</key>
-        <string>EndOfCheckPhase</string>
+	<key>Processor</key>
+	<string>EndOfCheckPhase</string>
       </dict>
     </array>
   </dict>
