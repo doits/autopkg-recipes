@@ -23,14 +23,14 @@
 					<key>url</key>
 					<string>https://www.pecuniabanking.de/index.php/downloads</string>
 					<key>re_pattern</key>
-					<string>Pecunia (?P&lt;version&gt;\d+\.\d+\.\d+) \(Build \d+(\.\d+)?\)</string>
+					<string>Pecunia (?P&lt;version_main&gt;\d+\.\d+\.\d+) \(Build (?P&lt;version_build&gt;\d+(\.\d+)?)\)</string>
 				</dict>
 			</dict>
 			<dict>
 				<key>Arguments</key>
 				<dict>
 					<key>url</key>
-					<string>https://www.pecuniabanking.de/downloads/%version%/Pecunia.zip</string>
+					<string>https://www.pecuniabanking.de/downloads/%version_main%/Pecunia.zip</string>
 				</dict>
 				<key>Processor</key>
 				<string>URLDownloader</string>
@@ -42,10 +42,6 @@
 			<dict>
 				<key>Arguments</key>
 				<dict>
-					<key>archive_path</key>
-					<string>%pathname%</string>
-					<key>destination_path</key>
-					<string>%RECIPE_CACHE_DIR%/%NAME%/Applications</string>
 					<key>purge_destination</key>
 					<true/>
 				</dict>
@@ -56,7 +52,7 @@
 				<key>Arguments</key>
 				<dict>
 					<key>input_plist_path</key>
-					<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pecunia.app/Contents/Info.plist</string>
+					<string>%RECIPE_CACHE_DIR%/%NAME%/Pecunia.app/Contents/Info.plist</string>
 					<key>plist_version_key</key>
 					<string>CFBundleVersion</string>
 				</dict>

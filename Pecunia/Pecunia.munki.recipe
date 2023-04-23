@@ -44,7 +44,7 @@
 					<key>dmg_path</key>
 					<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
 					<key>dmg_root</key>
-					<string>%RECIPE_CACHE_DIR%/%NAME%/Applications</string>
+					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				</dict>
 				<key>Processor</key>
 				<string>DmgCreator</string>
@@ -56,6 +56,8 @@
 					<string>%MUNKI_REPO_SUBDIR%</string>
 					<key>pkg_path</key>
 					<string>%dmg_path%</string>
+					<key>version_comparison_key</key>
+					<string>CFBundleVersion</string>
 				</dict>
 				<key>Processor</key>
 				<string>MunkiImporter</string>
