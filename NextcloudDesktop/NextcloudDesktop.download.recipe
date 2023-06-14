@@ -17,13 +17,13 @@
 		<array>
 			<dict>
 				<key>Processor</key>
-				<string>GitHubReleasesInfoProvider</string>
+				<string>URLTextSearcher</string>
 				<key>Arguments</key>
 				<dict>
-					<key>github_repo</key>
-					<string>nextcloud/desktop</string>
-					<key>asset_regex</key>
-					<string>Nextcloud-(.*).pkg</string>
+					<key>url</key>
+					<string>https://api.github.com/repos/nextcloud/desktop/releases/latest</string>
+					<key>re_pattern</key>
+					<string>"tag_name": "v?(?P&lt;version&gt;.+)"</string>
 				</dict>
 			</dict>
 			<dict>
@@ -32,7 +32,7 @@
 				<key>Arguments</key>
 				<dict>
 					<key>url</key>
-					<string>%url%</string>
+					<string>https://github.com/nextcloud-releases/desktop/releases/download/v%version%/Nextcloud-%version%.pkg</string>
 				</dict>
 			</dict>
 			<dict>
