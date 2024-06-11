@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>//download.gimp.org/gimp/(?P&lt;version_base&gt;.*)/macos/gimp-(?P&lt;version&gt;.*)-x86_64.dmg</string>
+				<string>(?P&lt;dl_path&gt;//download.gimp.org/gimp/(?P&lt;version_base&gt;.*)/macos/gimp-(?P&lt;version&gt;.*)-x86_64(-[0-9]*)?.dmg)</string>
 				<key>url</key>
 				<string>https://www.gimp.org/downloads/</string>
 			</dict>
@@ -32,9 +32,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://download.gimp.org/gimp/%version_base%/macos/gimp-%version%-x86_64.dmg</string>
+				<string>https:%dl_path%</string>
 				<key>filename</key>
-				<string>%NAME%.dmg</string>
+				<string>%NAME%-x86_64.dmg</string>
 				<key>CHECK_FILESIZE_ONLY</key>
 				<true/>
 			</dict>
