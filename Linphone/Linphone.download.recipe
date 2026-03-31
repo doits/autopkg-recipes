@@ -11,21 +11,36 @@
       <key>NAME</key>
       <string>Linphone</string>
       <key>url</key>
-      <string>https://linphone.org/releases/macosx/latest_app</string>
+      <string>https://download.linphone.org/releases/macosx/latest_app</string>
       <key>filename</key>
       <string>Linphone.dmg</string>
+      <key>prefetch_filename</key>
+      <true/>
     </dict>
     <key>MinimumVersion</key>
     <string>0.6.1</string>
     <key>Process</key>
     <array>
       <dict>
-	<key>Processor</key>
-	<string>URLDownloader</string>
+        <key>Processor</key>
+        <string>URLDownloader</string>
       </dict>
       <dict>
-	<key>Processor</key>
-	<string>EndOfCheckPhase</string>
+        <key>Processor</key>
+        <string>com.github.jazzace.processors/TextSearcher</string>
+        <key>Arguments</key>
+        <dict>
+          <key>re_pattern</key>
+          <string>Linphone-([\d.]+)-mac</string>
+          <key>result_output_var_name</key>
+          <string>version</string>
+          <key>text_in</key>
+          <string>%pathname%</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>Processor</key>
+        <string>EndOfCheckPhase</string>
       </dict>
     </array>
   </dict>
