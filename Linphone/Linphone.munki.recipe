@@ -37,6 +37,19 @@
         <dict>
           <key>additional_pkginfo</key>
           <dict>
+            <key>installs</key>
+            <array>
+              <dict>
+                <key>CFBundleShortVersionString</key>
+                <string>%version%</string>
+                <key>path</key>
+                <string>/Applications/Linphone.app</string>
+                <key>type</key>
+                <string>application</string>
+                <key>version_comparison_key</key>
+                <string>CFBundleShortVersionString</string>
+              </dict>
+            </array>
             <key>version</key>
             <string>%version%</string>
           </dict>
