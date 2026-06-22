@@ -31,6 +31,24 @@
 				<string>%MUNKI_CATEGORY%</string>
 				<key>unattended_install</key>
 				<true/>
+        <key>postinstall_script</key>
+        <string>#!/bin/sh
+
+        CURRENT_USER=$(stat -f '%Su' /dev/console)
+
+        if [ -z "$CURRENT_USER" ] || [ "$CURRENT_USER" = "root" ] || [ "$CURRENT_USER" = "loginwindow" ]; then
+            echo "No GUI user currently logged in. Nextcloud will launch normally on their next login."
+            exit 0
+        fi
+
+        USER_UID=$(id -u "$CURRENT_USER")
+
+        echo "Launching Nextcloud Client for user: $CURRENT_USER (UID: $USER_UID)..."
+
+        sudo -u "$CURRENT_USER" launchctl asuser "$USER_UID" open -a "/Applications/Nextcloud.app"
+
+        exit 0
+        </string>
 			</dict>
 		</dict>
 		<key>MinimumVersion</key>
