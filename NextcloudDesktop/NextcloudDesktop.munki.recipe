@@ -45,7 +45,7 @@
 
         echo "Launching Nextcloud Client for user: $CURRENT_USER (UID: $USER_UID)..."
 
-        sudo -u "$CURRENT_USER" launchctl asuser "$USER_UID" open -a "/Applications/Nextcloud.app"
+        launchctl asuser "$USER_UID" open -a "/Applications/Nextcloud.app"
 
         exit 0
         </string>
