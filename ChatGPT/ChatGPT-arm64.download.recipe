@@ -5,7 +5,7 @@
 		<key>Description</key>
 		<string>Downloads the latest version of the ChatGPT desktop app (Apple Silicon).</string>
 		<key>Identifier</key>
-		<string>com.github.doits.download.ChatGPT</string>
+		<string>com.github.doits.download.ChatGPT-arm64</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>
