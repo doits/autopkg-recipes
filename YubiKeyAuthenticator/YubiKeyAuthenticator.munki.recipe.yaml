@@ -1,0 +1,22 @@
+Description: Downloads the latest release of Yubico Authenticator and imports it into Munki.
+Identifier: com.github.doits.munki.YubiKeyAuthenticator
+ParentRecipe: com.github.doits.download.YubiKeyAuthenticator
+MinimumVersion: "2.3"
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: YubiKeyAuthenticator
+  MUNKI_CATEGORY: Utilities
+  pkginfo:
+    catalogs:
+      - testing
+    description: Generates OATH one-time codes from the credentials stored on a YubiKey.
+    developer: Yubico
+    display_name: Yubico Authenticator
+    name: '%NAME%'
+    category: '%MUNKI_CATEGORY%'
+    unattended_install: true
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+      pkg_path: '%pathname%'

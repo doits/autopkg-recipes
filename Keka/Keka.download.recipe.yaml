@@ -1,0 +1,19 @@
+Description: Downloads the latest release of Keka from GitHub.
+Identifier: com.github.doits.download.Keka
+MinimumVersion: "2.3"
+Input:
+  NAME: Keka
+Process:
+  - Processor: GitHubReleasesInfoProvider
+    Arguments:
+      asset_regex: ^Keka-[\d.]+\.dmg$
+      github_repo: aonez/Keka
+      include_prereleases: false
+  - Processor: URLDownloader
+    Arguments:
+      filename: '%NAME%-%version%.dmg'
+  - Processor: EndOfCheckPhase
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      input_path: '%pathname%/Keka.app'
+      requirement: anchor apple generic and identifier "com.aone.keka" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4FG648TM2A")
