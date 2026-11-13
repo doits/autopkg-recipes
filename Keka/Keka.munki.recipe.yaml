@@ -1,0 +1,22 @@
+Description: Downloads the latest release of Keka and imports it into Munki.
+Identifier: com.github.doits.munki.Keka
+ParentRecipe: com.github.doits.download.Keka
+MinimumVersion: "2.3"
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: Keka
+  MUNKI_CATEGORY: Utilities
+  pkginfo:
+    catalogs:
+      - testing
+    description: Keka is a free file archiver for macOS.
+    developer: aONe
+    display_name: Keka
+    name: '%NAME%'
+    category: '%MUNKI_CATEGORY%'
+    unattended_install: true
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+      pkg_path: '%pathname%'
