@@ -1,0 +1,45 @@
+Description: |
+  Imports an app installed from the Mac App Store on this Mac into Munki, skipping the copy when its version is already in the Munki repo.
+  Use it through an override that sets NAME and, if the app's file name differs from NAME, PATH. The Munki item's name must stay NAME, since the version check looks for NAME in the repo's 'all' catalog.
+  CODE_SIGNATURE_REQUIREMENT accepts any app signed by the Mac App Store; an override can narrow it, e.g. to the app's identifier.
+Identifier: com.github.doits.munki.AppStoreApp
+MinimumVersion: "2.3"
+Input:
+  NAME: AppStoreApp
+  PATH: /Applications/%NAME%.app
+  CODE_SIGNATURE_REQUIREMENT: anchor apple generic and certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+      - testing
+    display_name: '%NAME%'
+    name: '%NAME%'
+    unattended_install: true
+Process:
+  - Processor: Versioner
+    Arguments:
+      input_plist_path: '%PATH%/Contents/Info.plist'
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      input_path: '%PATH%'
+      requirement: '%CODE_SIGNATURE_REQUIREMENT%'
+  - Processor: MunkiRepoVersionChecker
+    Arguments:
+      name: '%NAME%'
+  - Processor: Copier
+    Arguments:
+      source_path: '%PATH%'
+      destination_path: '%RECIPE_CACHE_DIR%/%NAME%%PATH%'
+      overwrite: true
+  - Processor: DmgCreator
+    Arguments:
+      dmg_root: '%RECIPE_CACHE_DIR%/%NAME%%PATH%'
+      dmg_path: '%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg'
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: '%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg'
+      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  - Processor: PathDeleter
+    Arguments:
+      path_list:
+        - '%RECIPE_CACHE_DIR%/%NAME%'
